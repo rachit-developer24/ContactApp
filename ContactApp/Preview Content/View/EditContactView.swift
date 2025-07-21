@@ -54,9 +54,17 @@ struct EditContactView: View {
                // }
             }
         }
-        Button("delete"){
-            showdeleteconfirmation.toggle()
-        }
+        Button(action: {
+            showdeleteconfirmation = true
+        }, label: {
+            Text("Delete")
+                .fontWeight(.bold)
+                .foregroundStyle(.white)
+                .frame(width: 360, height: 50)
+                .background(Color.red)
+                .clipShape(.rect(cornerRadius: 10))
+        })
+    
         .alert("Delete Contact", isPresented: $showdeleteconfirmation, actions: {
             Button("stay", role: .cancel){}
             Button("delete",role: .destructive){
